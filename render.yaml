@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: kingdev-tool
+    env: docker
+    dockerfilePath: ./docker/Dockerfile
+    dockerContext: .
+    plan: starter          # free tier hầu như chắc chắn không đủ RAM cho Whisper/FFmpeg
+    envVars:
+      - key: APP_SECRET
+        generateValue: true
+      - key: DEBUG
+        value: "false"
+      - key: REGISTRATION_OPEN
+        value: "true"
+      - key: TRUST_PROXY
+        value: "true"
+      - key: MAX_UPLOAD_MB
+        value: "2048"
+      - key: MAX_CONCURRENT_JOBS
+        value: "1"
+      - key: VIDEO_CRF
+        value: "18"
+      - key: VIDEO_PRESET
+        value: "medium"
+      - key: RETENTION_HOURS
+        value: "24"
+      - key: OUTPUT_RETENTION_HOURS
+        value: "72"
+      - key: WHISPER_MODEL_SIZE
+        value: "base"
+      - key: WHISPER_DEVICE
+        value: "cpu"
+    disk:
+      name: kingdev-data
+      mountPath: /app/data
+      sizeGB: 5
