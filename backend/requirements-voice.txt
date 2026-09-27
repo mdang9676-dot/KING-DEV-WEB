@@ -1,0 +1,5 @@
+# Tuỳ chọn: giọng VieNeu-TTS tự host + NHÂN BẢN GIỌNG (Apache-2.0). Cài thêm sau requirements.txt:
+#   pip install -r requirements-voice.txt
+# Chạy CPU bằng ONNX Runtime, KHÔNG cần PyTorch. Lần dùng đầu sẽ tải model (~vài trăm MB) từ Hugging Face.
+# Có GPU NVIDIA muốn chạy nhanh hơn với văn bản dài: pip install "vieneu[cuda]"
+vieneu>=3.6

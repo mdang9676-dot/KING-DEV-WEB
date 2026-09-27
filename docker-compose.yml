@@ -1,0 +1,13 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      args:
+        WITH_VOICE: ${WITH_VOICE:-0}      # đặt WITH_VOICE=1 để cài VieNeu (nhân bản giọng)
+    ports: ["8000:8000"]
+    env_file:
+      - path: ./backend/.env
+        required: false
+    volumes: ["./data:/app/data"]
+    restart: unless-stopped
